@@ -114,3 +114,14 @@ def modify_customer():
     mycursor.execute(sql,val)
     mydb.commit()
   wait = input("\n\n\n Record Updated .............Press any key to continue......")
+
+def change_room_status():
+    mydb=mysql.connector.connect(host="localhost",user="root",passwd="1234",database="hotel")
+    mycursor=mydb.cursor()
+    room_no = input("Enter Room No :")
+    status = input("Enter current status(Renovation/modification ) :")
+    sql = "UPDATE rooms SET status=%s where room_no =%s;"
+    val=(status,room_no)
+    mycursor.execute(sql,val)
+    print("\n\nRoom Status Updated")
+    wait=input("\n\n\n Press any key to continue....")
