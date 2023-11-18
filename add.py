@@ -1,0 +1,46 @@
+def add_room():
+  mydb=mysql.connector.connect(host="localhost",user="root",passwd="1234",database="hotel")
+  mycursor=mydb.cursor()
+  clear()
+  print("add new room-screen")
+  print("-"*120)
+  id=int(input("enter your id:"))
+  room_no=int(input("\n enter room no:"))
+  room_type=input("\enter room type(ac/delux/super delux/non ac")
+  room_rent=float(input("\n enter room rent(INR):"))
+  room_bed=input("\n enter room bed type (single/double/triple):")
+  status=input("enter room status >>Free/booked>>>:")
+  sql="INSERT INTO  rooms   VALUES (%s,%s,%s,%s,%s,%s);"
+  values=(id,room_no,room_type,room_rent,room_bed,status)
+  mycursor.execute(sql,values)
+  mycursor.execute("DESC ROOMS")  
+  for x in mycursor:
+    print(x)
+  mydb.commit()
+  wait=input("\n\n\n Press any key to continue....")
+
+def add_customer():
+  mydb=mysql.connector.connect(host="localhost",user="root",passwd="1234",database="hotel")
+  mycursor=mydb.cursor()
+
+  print("Add New Customer")
+  print("-"*120)
+  id=int(input("id...........>>"))
+  name=input("\n Enter Customer Name :")
+  address=input("\n Enter Customer Address:")
+  phone=input("\n Enter Customer Phone NO :")
+  email=input("\n Enter Customer Email ID :")
+  id_proof=input("\n Enter Customer ID(Aadhar/Passport/DL/VoterID)  :")
+  id_proof_no=int(input("\n Enter Customer ID proof NO :"))
+  males=int(input("\n Enter Total Males :"))
+  females=int(input("\n Enter Total Females :"))
+  children=int(input("\n Enter Total Childeren :"))
+  sql="INSERT INTO customer VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s);"
+  values=(id,name,address,phone,email,id_proof,id_proof_no,males,females,children)
+  mycursor.execute(sql,values)
+  mycursor.execute("DESC CUSTOMER")
+  for x in mycursor:
+            print(x)
+  mydb.commit()
+  print("\n\n\nCustomer Added success fully ...............")
+  wait=input("\n\n\n Press any key to continue....")
