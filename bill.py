@@ -14,7 +14,7 @@ def bill_generation():
     print("-"*100)
     print(" Rooms occupied  :",room_id)
     dol = date.today()
-    book_id = record[0] # book_id
+    book_id = record[0] #book_id_number
     doo = record[3]
     advance = record[5]
     total_days = (dol-doo).days
